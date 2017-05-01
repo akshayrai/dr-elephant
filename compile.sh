@@ -83,12 +83,9 @@ cd ${project_root}
 cd ${project_root}
 
 
-#if npm is installed, install bower,ember-cli and other components for new UI
+#if npm is installed, install bower, ember-cli and other components for new UI
 
 if hash npm 2>/dev/null; then
-  echo "############################################################################"
-  echo "npm installation found, we'll compile with the new user interface"
-  echo "############################################################################"
   set -x
   sleep 3
   ember_assets=${project_root}/public/assets
@@ -110,9 +107,12 @@ if hash npm 2>/dev/null; then
   cp -r dist/fonts ${ember_assets}/
   cd ${project_root}
 else
-  echo "############################################################################"
-  echo "npm installation not found. Please install npm in order to compile with new user interface"
-  echo "############################################################################"
+  echo "##################################################################################################"
+  echo "ALERT: npm installation not found!"
+  echo "Details: Dr. Elephant supports 2 user interfaces. In order to use the latest(recommended) UI "
+  echo "you need to have npm installed on your machine."
+  echo "Since npm installation is not found, I will be compiling Dr. Elephant with the old UI"
+  echo "##################################################################################################"
   sleep 3
 fi
 
